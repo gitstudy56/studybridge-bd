@@ -4,18 +4,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>StudyBridge BD | Learn Better</title>
+<title>StudyBridge BD | Learn Without Limits</title>
 
 <style>
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
   font-family: Arial, sans-serif;
-  background: #f4f7fc;
+  background: #f5f7fc;
   color: #17233c;
   line-height: 1.6;
 }
@@ -23,117 +23,236 @@ body {
 header {
   background: #102b50;
   color: white;
-  padding: 20px;
+  padding: 17px 5%;
 }
 
 nav {
-  max-width: 1000px;
+  max-width: 1100px;
   margin: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 10px;
 }
 
 .logo {
-  font-size: 23px;
+  font-size: 21px;
   font-weight: bold;
 }
 
+nav button {
+  background: white;
+  color: #102b50;
+  border: none;
+  border-radius: 7px;
+  padding: 9px 13px;
+  cursor: pointer;
+}
+
 .hero {
-  background: #173f70;
+  background: linear-gradient(135deg, #102b50, #2465a5);
   color: white;
   text-align: center;
-  padding: 65px 20px;
+  padding: 75px 20px;
 }
 
 .hero h1 {
-  font-size: 36px;
-  margin-bottom: 12px;
+  font-size: clamp(30px, 6vw, 48px);
+  margin-bottom: 15px;
 }
 
 .hero p {
-  max-width: 550px;
+  max-width: 600px;
   margin: auto;
+  font-size: 17px;
 }
 
-main {
-  max-width: 950px;
-  margin: 35px auto;
-  padding: 0 18px;
+.hero a {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 12px 25px;
+  background: white;
+  color: #173f70;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
 }
 
-h2 {
-  margin-bottom: 18px;
+.container {
+  max-width: 1050px;
+  margin: auto;
+  padding: 45px 20px;
+}
+
+.section-title {
+  font-size: 27px;
+  margin-bottom: 22px;
 }
 
 .subjects {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 18px;
 }
 
 .subject {
   background: white;
-  padding: 22px 12px;
-  text-align: center;
-  border-radius: 12px;
-  box-shadow: 0 3px 12px #0000000d;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 5px 20px #17233c0c;
+  border: 1px solid #e9edf5;
+  transition: transform .2s;
 }
 
-.subject strong {
-  display: block;
-  margin-bottom: 5px;
-  font-size: 18px;
+.subject:hover {
+  transform: translateY(-4px);
+}
+
+.subject h3 {
+  font-size: 21px;
+  margin-bottom: 8px;
+}
+
+.subject p {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.quiz-section {
+  background: #eaf0fa;
+  padding: 45px 20px;
 }
 
 .quiz {
+  max-width: 700px;
+  margin: auto;
   background: white;
-  padding: 24px;
-  border-radius: 12px;
-  margin-top: 35px;
-  box-shadow: 0 3px 12px #0000000d;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px #17233c10;
+}
+
+.quiz-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 18px;
+  color: #64748b;
+}
+
+.progress {
+  height: 8px;
+  background: #e5eaf2;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 25px;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: #1769d2;
+  transition: width .3s;
+}
+
+#question {
+  font-size: 20px;
+  margin-bottom: 18px;
 }
 
 .option {
-  display: block;
   width: 100%;
-  padding: 12px;
-  margin: 10px 0;
-  background: #f0f4fa;
-  border: 1px solid #dce4ef;
-  border-radius: 8px;
+  padding: 14px;
+  margin: 7px 0;
   text-align: left;
+  background: #f5f7fc;
+  border: 1px solid #dce4ef;
+  border-radius: 9px;
   cursor: pointer;
   font-size: 15px;
+  color: #17233c;
 }
 
-.option:hover {
-  background: #dceaff;
+.option:hover:not(:disabled) {
+  border-color: #1769d2;
+  background: #edf4ff;
 }
 
-button {
+.option:disabled {
+  cursor: default;
+  opacity: 1;
+}
+
+.correct {
+  background: #dcfce7 !important;
+  border-color: #16a34a !important;
+}
+
+.wrong {
+  background: #fee2e2 !important;
+  border-color: #dc2626 !important;
+}
+
+#explanation {
+  margin-top: 17px;
+  padding: 13px;
+  background: #f0f5fc;
+  border-radius: 8px;
+  display: none;
+}
+
+#next {
+  margin-top: 20px;
+  display: none;
+  width: 100%;
+}
+
+button.primary {
   background: #1769d2;
   color: white;
   border: none;
-  padding: 12px 22px;
+  padding: 13px 22px;
   border-radius: 8px;
-  cursor: pointer;
   font-size: 15px;
+  cursor: pointer;
 }
 
 #result {
-  margin-top: 15px;
-  font-weight: bold;
+  display: none;
+  text-align: center;
+  padding: 25px 5px;
+}
+
+#result h3 {
+  font-size: 27px;
+  margin-bottom: 10px;
 }
 
 footer {
-  text-align: center;
-  padding: 25px;
   background: #102b50;
   color: white;
-  margin-top: 45px;
+  text-align: center;
+  padding: 30px 15px;
 }
 
+footer p {
+  font-size: 14px;
+  margin: 5px;
+}
+
+@media(max-width:480px) {
+  .hero {
+    padding: 55px 18px;
+  }
+
+  .container {
+    padding: 35px 17px;
+  }
+
+  .quiz {
+    padding: 20px;
+  }
+}
 </style>
 </head>
 
@@ -142,81 +261,355 @@ footer {
 <header>
 <nav>
 <div class="logo">StudyBridge BD</div>
-<div>Learn • Practice • Grow</div>
+<button onclick="toggleLanguage()" id="langBtn">
+বাংলা
+</button>
 </nav>
 </header>
 
 <section class="hero">
-<h1>Your Learning Journey Starts Here</h1>
-<p>A student-focused learning platform designed to make quality education more accessible.</p>
+<h1 id="heroTitle">Learn Without Limits.</h1>
+<p id="heroText">
+Explore subjects, test your knowledge and build
+a stronger academic future.
+</p>
+<a href="#subjects" id="heroButton">Explore Subjects</a>
 </section>
 
 <main>
 
-<section>
-<h2>Explore Your Subjects</h2>
+<section class="container" id="subjects">
+<h2 class="section-title" id="subjectTitle">
+Explore Your Subjects
+</h2>
 
 <div class="subjects">
+
 <div class="subject">
-<strong>⚛ Physics</strong>
-Practice and understand concepts.
+<h3>⚛ Physics</h3>
+<p id="physicsDesc">
+Understand the laws of the universe.
+</p>
 </div>
 
 <div class="subject">
-<strong>🧪 Chemistry</strong>
-Explore chemical science.
+<h3>🧪 Chemistry</h3>
+<p id="chemistryDesc">
+Explore matter and chemical reactions.
+</p>
 </div>
 
 <div class="subject">
-<strong>🧬 Biology</strong>
-Discover the living world.
+<h3>🧬 Biology</h3>
+<p id="biologyDesc">
+Discover life and living organisms.
+</p>
 </div>
 
 <div class="subject">
-<strong>📐 Mathematics</strong>
-Build problem-solving skills.
+<h3>📐 Mathematics</h3>
+<p id="mathDesc">
+Develop logical and analytical skills.
+</p>
 </div>
+
 </div>
 </section>
 
-<section class="quiz">
-<h2>Try a Physics Quiz</h2>
+<section class="quiz-section" id="quiz">
+<div class="quiz">
 
-<p><strong>Question:</strong> What is the SI unit of force?</p>
+<h2 id="quizTitle">Physics Knowledge Test</h2>
 
-<button class="option" onclick="checkAnswer(this, false)">A. Joule</button>
-<button class="option" onclick="checkAnswer(this, true)">B. Newton</button>
-<button class="option" onclick="checkAnswer(this, false)">C. Watt</button>
-<button class="option" onclick="checkAnswer(this, false)">D. Pascal</button>
+<div class="quiz-top">
+<span id="questionCount">Question 1 of 5</span>
+<span id="scoreLabel">Score: 0</span>
+</div>
 
-<p id="result" aria-live="polite"></p>
+<div class="progress">
+<div class="progress-bar" id="progressBar"></div>
+</div>
+
+<div id="quizContent">
+<h3 id="question"></h3>
+<div id="options"></div>
+<div id="explanation"></div>
+
+<button class="primary" id="next" onclick="nextQuestion()">
+Next Question →
+</button>
+</div>
+
+<div id="result">
+<h3 id="resultTitle">Quiz Completed!</h3>
+<p id="finalScore"></p>
+<p id="resultMessage"></p>
+<button class="primary" onclick="restartQuiz()" id="restartBtn">
+Try Again
+</button>
+</div>
+
+</div>
 </section>
 
 </main>
 
 <footer>
-<p>StudyBridge BD | An Open-Source Learning Project</p>
-<p>Built to make learning accessible to everyone.</p>
+<h3>StudyBridge BD</h3>
+<p id="footerText">
+An open-source learning initiative for everyone.
+</p>
+<p>Learn • Practice • Grow</p>
 </footer>
 
 <script>
+
+let language = "en";
+let current = 0;
+let score = 0;
 let answered = false;
 
-function checkAnswer(button, correct) {
+const questions = [
+{
+q: ["What is the SI unit of force?",
+"বলের SI একক কী?"],
+o: [["Joule","Newton","Watt","Pascal"],
+["জুল","নিউটন","ওয়াট","প্যাসকেল"]],
+a: 1,
+e: ["Newton (N) is the SI unit of force.",
+"নিউটন (N) হলো বলের SI একক।"]
+},
+{
+q: ["What is the SI unit of velocity?",
+"বেগের SI একক কী?"],
+o: [["m/s","m/s²","kg","N"],
+["m/s","m/s²","kg","N"]],
+a: 0,
+e: ["Velocity is measured in metres per second (m/s).",
+"বেগের একক মিটার প্রতি সেকেন্ড (m/s)।"]
+},
+{
+q: ["What is the SI unit of acceleration?",
+"ত্বরণের SI একক কী?"],
+o: [["m","m/s","m/s²","km/h"],
+["m","m/s","m/s²","km/h"]],
+a: 2,
+e: ["Acceleration is measured in metres per second squared (m/s²).",
+"ত্বরণের একক মিটার প্রতি সেকেন্ড বর্গ (m/s²)।"]
+},
+{
+q: ["Which quantity is measured in Joules?",
+"কোন রাশি জুল এককে পরিমাপ করা হয়?"],
+o: [["Force","Energy","Velocity","Mass"],
+["বল","শক্তি","বেগ","ভর"]],
+a: 1,
+e: ["The SI unit of energy is Joule (J).",
+"শক্তির SI একক জুল (J)।"]
+},
+{
+q: ["Which law gives F = ma?",
+"F = ma কোন সূত্র নির্দেশ করে?"],
+o: [["Newton's first law","Newton's second law",
+"Newton's third law","Law of gravitation"],
+["নিউটনের প্রথম সূত্র","নিউটনের দ্বিতীয় সূত্র",
+"নিউটনের তৃতীয় সূত্র","মহাকর্ষ সূত্র"]],
+a: 1,
+e: ["Newton's second law relates force, mass and acceleration.",
+"নিউটনের দ্বিতীয় সূত্র বল, ভর ও ত্বরণের সম্পর্ক নির্দেশ করে।"]
+}
+];
+
+const translations = {
+en: {
+hero: "Learn Without Limits.",
+heroText: "Explore subjects, test your knowledge and build a stronger academic future.",
+heroButton: "Explore Subjects",
+subjectTitle: "Explore Your Subjects",
+physics: "Understand the laws of the universe.",
+chemistry: "Explore matter and chemical reactions.",
+biology: "Discover life and living organisms.",
+math: "Develop logical and analytical skills.",
+quizTitle: "Physics Knowledge Test",
+score: "Score",
+next: "Next Question →",
+finish: "See Results",
+result: "Quiz Completed!",
+restart: "Try Again",
+correct: "Correct!",
+wrong: "Not quite. Learn from the explanation below.",
+footer: "An open-source learning initiative for everyone.",
+question: "Question",
+of: "of"
+},
+bn: {
+hero: "সীমাহীনভাবে শেখো।",
+heroText: "বিষয়ভিত্তিক জ্ঞান অর্জন করো, নিজেকে যাচাই করো এবং এগিয়ে যাও।",
+heroButton: "বিষয়গুলো দেখো",
+subjectTitle: "তোমার বিষয়গুলো",
+physics: "মহাবিশ্বের পদার্থবিজ্ঞানের নিয়ম বোঝো।",
+chemistry: "পদার্থ ও রাসায়নিক বিক্রিয়া জানো।",
+biology: "জীবন ও জীবজগৎ সম্পর্কে জানো।",
+math: "যুক্তি ও গাণিতিক দক্ষতা বাড়াও।",
+quizTitle: "পদার্থবিজ্ঞান জ্ঞান পরীক্ষা",
+score: "স্কোর",
+next: "পরের প্রশ্ন →",
+finish: "ফলাফল দেখো",
+result: "কুইজ সম্পন্ন!",
+restart: "আবার চেষ্টা করো",
+correct: "সঠিক উত্তর!",
+wrong: "সঠিক হয়নি। নিচের ব্যাখ্যাটি পড়ো।",
+footer: "সবার জন্য উন্মুক্ত শিক্ষামূলক উদ্যোগ।",
+question: "প্রশ্ন",
+of: "এর মধ্যে"
+}
+};
+
+function renderQuestion() {
+  answered = false;
+
+  const q = questions[current];
+  const lang = language === "en" ? 0 : 1;
+  const t = translations[language];
+
+  document.getElementById("quizContent").style.display = "block";
+  document.getElementById("result").style.display = "none";
+
+  document.getElementById("questionCount").textContent =
+    t.question + " " + (current + 1) + " " + t.of + " 5";
+
+  document.getElementById("scoreLabel").textContent =
+    t.score + ": " + score;
+
+  document.getElementById("question").textContent = q.q[lang];
+
+  document.getElementById("progressBar").style.width =
+    (current / questions.length * 100) + "%";
+
+  document.getElementById("explanation").style.display = "none";
+
+  const options = document.getElementById("options");
+  options.innerHTML = "";
+
+  q.o[lang].forEach((option, i) => {
+    const btn = document.createElement("button");
+    btn.className = "option";
+    btn.textContent = String.fromCharCode(65 + i) + ". " + option;
+    btn.onclick = () => checkAnswer(i, btn);
+    options.appendChild(btn);
+  });
+
+  const next = document.getElementById("next");
+  next.style.display = "none";
+  next.textContent = current === 4 ? t.finish : t.next;
+}
+
+function checkAnswer(selected, button) {
   if (answered) return;
 
   answered = true;
 
-  const result = document.getElementById("result");
+  const q = questions[current];
+  const lang = language === "en" ? 0 : 1;
+  const t = translations[language];
 
-  if (correct) {
-    result.textContent =
-      "Correct! Newton (N) is the SI unit of force.";
+  if (selected === q.a) {
+    score++;
+  }
+
+  document.querySelectorAll(".option").forEach((btn, i) => {
+    btn.disabled = true;
+
+    if (i === q.a) {
+      btn.classList.add("correct");
+    }
+
+    if (i === selected && selected !== q.a) {
+      btn.classList.add("wrong");
+    }
+  });
+
+  const explanation = document.getElementById("explanation");
+
+  explanation.style.display = "block";
+  explanation.textContent =
+    (selected === q.a ? t.correct + " " : t.wrong + " ") +
+    q.e[lang];
+
+  document.getElementById("scoreLabel").textContent =
+    t.score + ": " + score;
+
+  document.getElementById("next").style.display = "block";
+}
+
+function nextQuestion() {
+  if (!answered) return;
+
+  if (current < questions.length - 1) {
+    current++;
+    renderQuestion();
   } else {
-    result.textContent =
-      "Not quite. The correct answer is Newton (N).";
+    showResult();
   }
 }
+
+function showResult() {
+  const t = translations[language];
+
+  document.getElementById("quizContent").style.display = "none";
+  document.getElementById("result").style.display = "block";
+
+  document.getElementById("progressBar").style.width = "100%";
+  document.getElementById("resultTitle").textContent = t.result;
+
+  document.getElementById("finalScore").textContent =
+    t.score + ": " + score + "/5";
+
+  document.getElementById("resultMessage").textContent =
+    language === "en"
+    ? (score >= 4 ? "Excellent work! Keep learning." :
+       score >= 2 ? "Good effort! Keep practising." :
+       "Keep practising. You can improve!")
+    : (score >= 4 ? "চমৎকার! শেখা চালিয়ে যাও।" :
+       score >= 2 ? "ভালো চেষ্টা! অনুশীলন চালিয়ে যাও।" :
+       "আরও অনুশীলন করো। তুমি উন্নতি করতে পারবে!");
+}
+
+function restartQuiz() {
+  current = 0;
+  score = 0;
+  renderQuestion();
+}
+
+function toggleLanguage() {
+  language = language === "en" ? "bn" : "en";
+
+  const t = translations[language];
+
+  document.documentElement.lang = language;
+  document.getElementById("langBtn").textContent =
+    language === "en" ? "বাংলা" : "English";
+
+  document.getElementById("heroTitle").textContent = t.hero;
+  document.getElementById("heroText").textContent = t.heroText;
+  document.getElementById("heroButton").textContent = t.heroButton;
+  document.getElementById("subjectTitle").textContent = t.subjectTitle;
+  document.getElementById("physicsDesc").textContent = t.physics;
+  document.getElementById("chemistryDesc").textContent = t.chemistry;
+  document.getElementById("biologyDesc").textContent = t.biology;
+  document.getElementById("mathDesc").textContent = t.math;
+  document.getElementById("quizTitle").textContent = t.quizTitle;
+  document.getElementById("footerText").textContent = t.footer;
+  document.getElementById("restartBtn").textContent = t.restart;
+
+  if (document.getElementById("result").style.display === "block") {
+    showResult();
+  } else {
+    renderQuestion();
+  }
+}
+
+renderQuestion();
+
 </script>
 
 </body>
